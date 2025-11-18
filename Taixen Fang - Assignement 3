@@ -15,19 +15,42 @@ print(write_and_read_txt("output.txt", [16,255,34,4777,554,6]))
 # Function 2: File I/O - Writing and Reading from a CSV File
 # Writes a list of lists to a CSV file and reads it back.
 def write_and_read_csv(filename, data):
-    return []
+    opfile = open(filename , 'w')
+    opfile.write(list[data])
+    opfile.close()
+    infile = open(filename, 'r')
+    print(infile.read())
+data = [[1,2,3,4,5,6,7,8,9,10], [2313, 52515,643634,7576446, 43162364, 675474], [52354235, 64634345, 654634, 4143788]]
+print(write_and_read_txt("output.csv", data))
 
 # Function 3: Reading an Array from a File
 # Reads a space-separated array from a text file and converts it to a NumPy array.
 def read_array_from_file(filename):
-    return np.array([])
+    return np.loadtxt(filename)
+print(read_array_from_file("Array_Data.txt"))
 
 # Function 4: Plotting Data with plot() and show()
 # This function plots a given list of numbers as a line graph.
-def plot_data(numbers):
-    return
+def plot_data(x_values, y_values):
+    plt.plot(x_values, y_values, marker = 'o', color = 'blue')
+    plt.xlabel("x-axis")
+    plt.ylabel("y-axis")
+    plt.title("Line Graph")
+    plt.grid(True)
+    plt.show()
+x_values = np.array([13,25,37,47,59,62,73])
+y_values = np.array([132,242,333,444,525,675,786])
+plot_data(x_values, y_values)
 
 # Function 5: Density Plot
 # This function takes a list of numbers and plots a density plot.
 def density_plot(data):
-    return
+    plt.hist2d(data[:,0], data[:,1], bins=100, denstiy=True)
+    plt.title("Density Plot")  
+    plt.colorbar(label="Density")   
+    plt.xlabel("x-axis")           
+    plt.ylabel("y-axis")            
+    plt.show()
+np.random.seed(0)
+data = np.random.randn(1000,2)
+density_plot(data)
