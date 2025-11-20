@@ -4,53 +4,55 @@ import numpy as np
 
 # Function 1: File I/O - Writing and Reading from a Text File
 # Writes a list of numbers to a file and then reads them back as a list of integers.
-def write_and_read_txt(filename, numbers):
-    opfile = open(filename , 'w')
-    opfile.write(str(numbers))
-    opfile.close()
-    infile = open(filename, 'r')
-    print(infile.read())
-print(write_and_read_txt("output.txt", [16,255,34,4777,554,6]))
+def write_and_read_txt(filename, numbers): # Defining the function
+    opfile = open(filename , 'w')          # Open file into write mode
+    opfile.write(str(numbers))             # Writing the numbers to the text file
+    opfile.close()                         # Close the file
+    infile = open(filename, 'r')           # Read mode
+    print(infile.read())                   # Print what's in the file
+print(write_and_read_txt("output.txt", [16,255,34,4777,554,6])) # Function call
 
 # Function 2: File I/O - Writing and Reading from a CSV File
 # Writes a list of lists to a CSV file and reads it back.
-def write_and_read_csv(filename, data):
-    opfile = open(filename , 'w')
-    opfile.write(list[data])
-    opfile.close()
-    infile = open(filename, 'r')
-    print(infile.read())
-data = [[1,2,3,4,5,6,7,8,9,10], [2313, 52515,643634,7576446, 43162364, 675474], [52354235, 64634345, 654634, 4143788]]
-print(write_and_read_txt("output.csv", data))
+def write_and_read_csv(filename, data):     # Defining the fucntion
+    opfile = open(filename , 'w')           # Open file into write mode
+    opfile.write(list[data])                # Writing a list of lists to the csv file
+    opfile.close()                          # Close the file
+    infile = open(filename, 'r')            # Read mode
+    print(infile.read())                    # Print what's in the file
+data = [[1,2,3,4,5,6,7,8,9,10], [2313, 52515,643634,7576446, 43162364, 675474], [52354235, 64634345, 654634, 4143788]]  # List of numbers
+print(write_and_read_txt("output.csv", data))   # Function call
 
 # Function 3: Reading an Array from a File
 # Reads a space-separated array from a text file and converts it to a NumPy array.
-def read_array_from_file(filename):
-    return np.loadtxt(filename)
-print(read_array_from_file("Array_Data.txt"))
+def read_array_from_file(filename):             # Defining the fucntion
+    return np.loadtxt(filename)                 # Returns the contents of the file as a NumPy array
+print(read_array_from_file("Array_Data.txt"))   # Function call
 
 # Function 4: Plotting Data with plot() and show()
 # This function plots a given list of numbers as a line graph.
-def plot_data(x_values, y_values):
+def plot_data(x_values, y_values):  # Defining the function
+    # Setting the parameters of the plot
     plt.plot(x_values, y_values, marker = 'o', color = 'blue')
-    plt.xlabel("x-axis")
-    plt.ylabel("y-axis")
-    plt.title("Line Graph")
-    plt.grid(True)
-    plt.show()
-x_values = np.array([13,25,37,47,59,62,73])
-y_values = np.array([132,242,333,444,525,675,786])
-plot_data(x_values, y_values)
+    plt.xlabel("x-axis")    # x-axis title
+    plt.ylabel("y-axis")    # y-axis title
+    plt.title("Line Graph") # graph title
+    plt.grid(True)          # show the grid
+    plt.show()              # show the graph
+x_values = np.array([13,25,37,47,59,62,73])         # x values
+y_values = np.array([132,242,333,444,525,675,786])  # y values
+plot_data(x_values, y_values)   # Function call
 
 # Function 5: Density Plot
 # This function takes a list of numbers and plots a density plot.
-def density_plot(data):
-    plt.hist2d(data[:,0], data[:,1], bins=100, denstiy=True)
-    plt.title("Density Plot")  
-    plt.colorbar(label="Density")   
-    plt.xlabel("x-axis")           
-    plt.ylabel("y-axis")            
-    plt.show()
-np.random.seed(0)
+def density_plot(data): # Defining the function
+    # Setting the parameters for the plot
+    plt.hist2d(data[:,0], data[:,1], bins=100, density=True)
+    plt.title("Density Plot")       # Density plot title
+    plt.colorbar(label="Density")   # Color bar for the density
+    plt.xlabel("x-axis")            # x-axis title
+    plt.ylabel("y-axis")            # y-axis title
+    plt.show()                      # show the plot
+np.random.seed(0)                   # Copied numbers from the lab 10
 data = np.random.randn(1000,2)
-density_plot(data)
+density_plot(data)                  # Function call
